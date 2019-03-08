@@ -10,8 +10,9 @@ using eBAPI.DocumentManagement;
 eBAConnection con = CreateServerConnection();
 try{
 	con.Open();
+	FileSystem fs = con.FileSystem;
 	int formId = 1;
-	DMFile form = con.FileSystem.GetFile("workflow/Proje/Form/"+formId+".wfd");
+	DMFile form = fs.GetFile("workflow/Proje/Form/"+formId+".wfd");
 	string categoryName = "default";
 	string targetFolder = "Kütüphane/Test/"+DateTime.Now.Year.ToString()+"/"+DateTime.Now.Month.ToString("D2");
 	foreach(DMFileContent dmc in form.GetAttachments(categoryName ))
